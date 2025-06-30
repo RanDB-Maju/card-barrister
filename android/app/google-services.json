@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695230684172",
+    "project_id": "educationai-4a07a",
+    "storage_bucket": "educationai-4a07a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695230684172:android:48852820c56950e2e6e229",
+        "android_client_info": {
+          "package_name": "com.mycompany.googleedtechai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFUoCM2VoVatwgmuKUtGerVmnHU37zNuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
