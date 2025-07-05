@@ -8,6 +8,12 @@ import 'schema/util/firestore_util.dart';
 import 'schema/users_record.dart';
 import 'schema/chats_record.dart';
 import 'schema/messages_record.dart';
+import 'schema/card_barrister_users_record.dart';
+import 'schema/card_barrister_cards_record.dart';
+import 'schema/card_barrister_decks_record.dart';
+import 'schema/card_barrister_rulebook_record.dart';
+import 'schema/card_barrister_chat_history_record.dart';
+import 'schema/support_tickets_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -19,6 +25,12 @@ export 'schema/util/schema_util.dart';
 export 'schema/users_record.dart';
 export 'schema/chats_record.dart';
 export 'schema/messages_record.dart';
+export 'schema/card_barrister_users_record.dart';
+export 'schema/card_barrister_cards_record.dart';
+export 'schema/card_barrister_decks_record.dart';
+export 'schema/card_barrister_rulebook_record.dart';
+export 'schema/card_barrister_chat_history_record.dart';
+export 'schema/support_tickets_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -129,6 +141,230 @@ Future<List<MessagesRecord>> queryMessagesRecordOnce({
     queryCollectionOnce(
       MessagesRecord.collection(parent),
       MessagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CardBarristerUsersRecords (as a Stream and as a Future).
+Future<int> queryCardBarristerUsersRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CardBarristerUsersRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CardBarristerUsersRecord>> queryCardBarristerUsersRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CardBarristerUsersRecord.collection,
+      CardBarristerUsersRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CardBarristerUsersRecord>> queryCardBarristerUsersRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CardBarristerUsersRecord.collection,
+      CardBarristerUsersRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CardBarristerCardsRecords (as a Stream and as a Future).
+Future<int> queryCardBarristerCardsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CardBarristerCardsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CardBarristerCardsRecord>> queryCardBarristerCardsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CardBarristerCardsRecord.collection,
+      CardBarristerCardsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CardBarristerCardsRecord>> queryCardBarristerCardsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CardBarristerCardsRecord.collection,
+      CardBarristerCardsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CardBarristerDecksRecords (as a Stream and as a Future).
+Future<int> queryCardBarristerDecksRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CardBarristerDecksRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CardBarristerDecksRecord>> queryCardBarristerDecksRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CardBarristerDecksRecord.collection,
+      CardBarristerDecksRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CardBarristerDecksRecord>> queryCardBarristerDecksRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CardBarristerDecksRecord.collection,
+      CardBarristerDecksRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CardBarristerRulebookRecords (as a Stream and as a Future).
+Future<int> queryCardBarristerRulebookRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CardBarristerRulebookRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CardBarristerRulebookRecord>> queryCardBarristerRulebookRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CardBarristerRulebookRecord.collection,
+      CardBarristerRulebookRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CardBarristerRulebookRecord>> queryCardBarristerRulebookRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CardBarristerRulebookRecord.collection,
+      CardBarristerRulebookRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CardBarristerChatHistoryRecords (as a Stream and as a Future).
+Future<int> queryCardBarristerChatHistoryRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CardBarristerChatHistoryRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CardBarristerChatHistoryRecord>>
+    queryCardBarristerChatHistoryRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+        queryCollection(
+          CardBarristerChatHistoryRecord.collection,
+          CardBarristerChatHistoryRecord.fromSnapshot,
+          queryBuilder: queryBuilder,
+          limit: limit,
+          singleRecord: singleRecord,
+        );
+
+Future<List<CardBarristerChatHistoryRecord>>
+    queryCardBarristerChatHistoryRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+        queryCollectionOnce(
+          CardBarristerChatHistoryRecord.collection,
+          CardBarristerChatHistoryRecord.fromSnapshot,
+          queryBuilder: queryBuilder,
+          limit: limit,
+          singleRecord: singleRecord,
+        );
+
+/// Functions to query SupportTicketsRecords (as a Stream and as a Future).
+Future<int> querySupportTicketsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SupportTicketsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SupportTicketsRecord>> querySupportTicketsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SupportTicketsRecord.collection,
+      SupportTicketsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SupportTicketsRecord>> querySupportTicketsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SupportTicketsRecord.collection,
+      SupportTicketsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

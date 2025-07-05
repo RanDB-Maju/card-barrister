@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class UsersRecord extends FirestoreRecord {
-  UsersRecord._(
+class CardBarristerUsersRecord extends FirestoreRecord {
+  CardBarristerUsersRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -46,25 +46,25 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "shortDescription" field.
-  String? _shortDescription;
-  String get shortDescription => _shortDescription ?? '';
-  bool hasShortDescription() => _shortDescription != null;
+  // "edited_time" field.
+  DateTime? _editedTime;
+  DateTime? get editedTime => _editedTime;
+  bool hasEditedTime() => _editedTime != null;
 
-  // "last_active_time" field.
-  DateTime? _lastActiveTime;
-  DateTime? get lastActiveTime => _lastActiveTime;
-  bool hasLastActiveTime() => _lastActiveTime != null;
+  // "bio" field.
+  String? _bio;
+  String get bio => _bio ?? '';
+  bool hasBio() => _bio != null;
 
-  // "role" field.
-  String? _role;
-  String get role => _role ?? '';
-  bool hasRole() => _role != null;
+  // "user_name" field.
+  String? _userName;
+  String get userName => _userName ?? '';
+  bool hasUserName() => _userName != null;
 
-  // "title" field.
-  String? _title;
-  String get title => _title ?? '';
-  bool hasTitle() => _title != null;
+  // "bookMarkedRules" field.
+  List<String>? _bookMarkedRules;
+  List<String> get bookMarkedRules => _bookMarkedRules ?? const [];
+  bool hasBookMarkedRules() => _bookMarkedRules != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -73,56 +73,57 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _shortDescription = snapshotData['shortDescription'] as String?;
-    _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
-    _role = snapshotData['role'] as String?;
-    _title = snapshotData['title'] as String?;
+    _editedTime = snapshotData['edited_time'] as DateTime?;
+    _bio = snapshotData['bio'] as String?;
+    _userName = snapshotData['user_name'] as String?;
+    _bookMarkedRules = getDataList(snapshotData['bookMarkedRules']);
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('card-barrister-users');
 
-  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
+  static Stream<CardBarristerUsersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => CardBarristerUsersRecord.fromSnapshot(s));
 
-  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => UsersRecord.fromSnapshot(s));
+  static Future<CardBarristerUsersRecord> getDocumentOnce(
+          DocumentReference ref) =>
+      ref.get().then((s) => CardBarristerUsersRecord.fromSnapshot(s));
 
-  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
+  static CardBarristerUsersRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      CardBarristerUsersRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static UsersRecord getDocumentFromData(
+  static CardBarristerUsersRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      UsersRecord._(reference, mapFromFirestore(data));
+      CardBarristerUsersRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
+      'CardBarristerUsersRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is UsersRecord &&
+      other is CardBarristerUsersRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createUsersRecordData({
+Map<String, dynamic> createCardBarristerUsersRecordData({
   String? email,
   String? displayName,
   String? photoUrl,
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
-  String? shortDescription,
-  DateTime? lastActiveTime,
-  String? role,
-  String? title,
+  DateTime? editedTime,
+  String? bio,
+  String? userName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -132,47 +133,48 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
-      'shortDescription': shortDescription,
-      'last_active_time': lastActiveTime,
-      'role': role,
-      'title': title,
+      'edited_time': editedTime,
+      'bio': bio,
+      'user_name': userName,
     }.withoutNulls,
   );
 
   return firestoreData;
 }
 
-class UsersRecordDocumentEquality implements Equality<UsersRecord> {
-  const UsersRecordDocumentEquality();
+class CardBarristerUsersRecordDocumentEquality
+    implements Equality<CardBarristerUsersRecord> {
+  const CardBarristerUsersRecordDocumentEquality();
 
   @override
-  bool equals(UsersRecord? e1, UsersRecord? e2) {
+  bool equals(CardBarristerUsersRecord? e1, CardBarristerUsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.shortDescription == e2?.shortDescription &&
-        e1?.lastActiveTime == e2?.lastActiveTime &&
-        e1?.role == e2?.role &&
-        e1?.title == e2?.title;
+        e1?.editedTime == e2?.editedTime &&
+        e1?.bio == e2?.bio &&
+        e1?.userName == e2?.userName &&
+        listEquality.equals(e1?.bookMarkedRules, e2?.bookMarkedRules);
   }
 
   @override
-  int hash(UsersRecord? e) => const ListEquality().hash([
+  int hash(CardBarristerUsersRecord? e) => const ListEquality().hash([
         e?.email,
         e?.displayName,
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.shortDescription,
-        e?.lastActiveTime,
-        e?.role,
-        e?.title
+        e?.editedTime,
+        e?.bio,
+        e?.userName,
+        e?.bookMarkedRules
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is UsersRecord;
+  bool isValidKey(Object? o) => o is CardBarristerUsersRecord;
 }

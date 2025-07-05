@@ -264,7 +264,8 @@ class _ChatBubblesWidgetState extends State<ChatBubblesWidget> {
                         ),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: FlutterFlowTheme.of(context).customColor1,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           width: 1.5,
                         ),
                       ),

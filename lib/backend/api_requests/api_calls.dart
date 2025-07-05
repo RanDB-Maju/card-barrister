@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,15 +19,15 @@ class MTGDevGroup {
     'Link': '<https://api.magicthegathering.io/v1>',
     'Page-size': '100',
   };
-  static GetCardsCall getCardsCall = GetCardsCall();
+  static GetCardSingleCall getCardSingleCall = GetCardSingleCall();
 }
 
-class GetCardsCall {
+class GetCardSingleCall {
   Future<ApiCallResponse> call() async {
     final baseUrl = MTGDevGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'getCards',
+      callName: 'getCardSingle',
       apiUrl: '${baseUrl}/cards',
       callType: ApiCallType.GET,
       headers: {
@@ -43,6 +45,30 @@ class GetCardsCall {
       alwaysAllowBody: false,
     );
   }
+
+  List? cards(dynamic response) => getJsonField(
+        response,
+        r'''$.cards''',
+        true,
+      ) as List?;
+  List<String>? name(dynamic response) => (getJsonField(
+        response,
+        r'''$.cards[:].name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$.cards[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 /// End MTG dev Group Code

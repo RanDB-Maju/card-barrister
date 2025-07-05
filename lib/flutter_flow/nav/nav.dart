@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -122,6 +123,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ProfileWidget.routeName,
           path: ProfileWidget.routePath,
           builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: SupportTicketListWidget.routeName,
+          path: SupportTicketListWidget.routePath,
+          builder: (context, params) => SupportTicketListWidget(),
+        ),
+        FFRoute(
+          name: SupportSubmitTicketWidget.routeName,
+          path: SupportSubmitTicketWidget.routePath,
+          builder: (context, params) => SupportSubmitTicketWidget(),
+        ),
+        FFRoute(
+          name: SupportTicketDetailsWidget.routeName,
+          path: SupportTicketDetailsWidget.routePath,
+          asyncParams: {
+            'ticketRef':
+                getDoc(['supportTickets'], SupportTicketsRecord.fromSnapshot),
+          },
+          builder: (context, params) => SupportTicketDetailsWidget(
+            ticketRef: params.getParam(
+              'ticketRef',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -241,6 +266,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -259,6 +285,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
